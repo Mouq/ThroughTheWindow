@@ -74,7 +74,7 @@ class Game is Steroids::Game {
             }
         } else {
             $in-jump = False;
-            $!runner.gravity = 2;
+            $!runner.gravity = 1.5;
         }
 
         $!distance++;
