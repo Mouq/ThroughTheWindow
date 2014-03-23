@@ -34,7 +34,7 @@ class Game {
         has $.x is rw;
         has $.y is rw;
         has $.velocity = [0, 0];
-        has $.gravity is rw;
+        has $.gravity is rw = 0;
         has Texture $.tex handles <w h>;
         has @.events;
 
@@ -114,9 +114,7 @@ class Game {
 
     method physics {
         for @!entities {
-            if $_.gravity {
-                $_.velocity[1] += 1
-            }
+            $_.velocity[1] += .gravity;
             $_.x = (.x + $_.velocity[0]).Int;
             $_.y = (.y + $_.velocity[1]).Int;
         }

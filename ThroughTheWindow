@@ -64,15 +64,19 @@ class Game is Steroids::Game {
             $!last-cloud = $!distance;
         }
 
-        if self.is_pressed("Space") and $!runner.y == GROUNDLEVEL - $!runner.h {
-            $!runner.velocity[1] = -22;
-            unless $!jumped {
-                $!jumped = True;
-                my $b = self.add_sprite('banner2', self.width, GROUNDLEVEL);
-                $b.y += $b.h;
-                $b.velocity[0] = -5;
+        state $in-jump = False;
+        if self.is_pressed("Space") {
+            if $!runner.y == GROUNDLEVEL - $!runner.h {
+                $in-jump = True;
+                $!runner.velocity[1] -= 22;
+            } elsif $in-jump {
+                $!runner.gravity = 0.5
             }
+        } else {
+            $in-jump = False;
+            $!runner.gravity = 2;
         }
+
         $!distance++;
     }
 }
