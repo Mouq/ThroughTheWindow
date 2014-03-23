@@ -37,7 +37,7 @@ game_init(int width, int height)
     SDL_Init(SDL_INIT_EVERYTHING);
 
     Game *game = malloc(sizeof(Game));
-    game->window = SDL_CreateWindow("Steroids", -1, -1, width, height, SDL_WINDOW_SHOWN);
+    game->window = SDL_CreateWindow("Steroids", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
     game->renderer = SDL_CreateRenderer(game->window, -1,
                                         SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     game->running = 1;

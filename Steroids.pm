@@ -117,8 +117,8 @@ class Game {
             if $_.gravity {
                 $_.velocity[1] += 1
             }
-            $_.x += $_.velocity[0];
-            $_.y += $_.velocity[1];
+            $_.x = (.x + $_.velocity[0]).Int;
+            $_.y = (.y + $_.velocity[1]).Int;
         }
     }
 
